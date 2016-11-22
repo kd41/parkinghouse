@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 
 import ee.home.parkinghouse.dao.UserDao;
 import ee.home.parkinghouse.model.User;
@@ -19,7 +20,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> findAll() {
-        return new ArrayList<>(cache.values());
+        return new ArrayList<>(cache.values().stream().filter(user -> !user.isDeleted()).collect(Collectors.toList()));
     }
 
     @Override
@@ -44,8 +45,9 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public long deleteUser(String username) {
-        return cache.remove(username).getId();
+    public long deleteUser(User user) {
+        user.setDeleted(true);
+        return user.getId();
     }
 
 }

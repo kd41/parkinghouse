@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 
 import ee.home.parkinghouse.model.User;
+import ee.home.parkinghouse.model.User.CustomerType;
 import ee.home.parkinghouse.service.dao.UserService;
 import ee.home.parkinghouse.service.exception.BadRequestException;
 
@@ -30,7 +31,7 @@ public class UserController {
     @RequestMapping(method = RequestMethod.POST, value = "/{username}")
     public ResponseEntity<Long> add(@PathVariable String username) {
         checkUsername(username);
-        return ResponseEntity.ok(userService.addUser(username));
+        return ResponseEntity.ok(userService.addUser(username, CustomerType.REGULAR));
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/{username}")

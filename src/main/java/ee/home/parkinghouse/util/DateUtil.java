@@ -4,8 +4,14 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public final class DateUtil {
+    public static final String DATE_FORMAT = "dd.MM.yyyy_HH:mm";
+
     private DateUtil() {
         // empty
+    }
+
+    public static Date now() {
+        return new Date();
     }
 
     public static LocalDateTime nowLocalDateTime() {

@@ -1,15 +1,36 @@
 package ee.home.parkinghouse.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import ee.home.parkinghouse.util.JsonDateDeserializer;
+import ee.home.parkinghouse.util.JsonDateSerializer;
+
 public class Fee {
 
+    private long id;
+    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonDeserialize(using = JsonDateDeserializer.class)
     private Date start;
+    @JsonSerialize(using = JsonDateSerializer.class)
+    @JsonDeserialize(using = JsonDateDeserializer.class)
     private Date end;
     private List<Part> parts = new ArrayList<>();
     private long totalCost;
+    private User user;
+    private boolean payed;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public Date getStart() {
         return start;
@@ -41,6 +62,44 @@ public class Fee {
 
     public void setTotalCost(long totalCost) {
         this.totalCost = totalCost;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public boolean isPayed() {
+        return payed;
+    }
+
+    public void setPayed(boolean payed) {
+        this.payed = payed;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + (int) (id ^ (id >>> 32));
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Fee other = (Fee) obj;
+        if (id != other.id)
+            return false;
+        return true;
     }
 
     public static class Part {

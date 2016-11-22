@@ -3,6 +3,7 @@ package ee.home.parkinghouse.service.dao;
 import java.util.List;
 
 import ee.home.parkinghouse.model.User;
+import ee.home.parkinghouse.model.User.CustomerType;
 
 public interface UserService {
 
@@ -10,7 +11,7 @@ public interface UserService {
 
     User findByUsername(String username);
 
-    long addUser(String username);
+    long addUser(String username, CustomerType type);
 
     void changeUsername(String username, String newUsername);
 
