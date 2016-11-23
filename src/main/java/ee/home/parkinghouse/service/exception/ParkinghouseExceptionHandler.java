@@ -13,8 +13,8 @@ public class ParkinghouseExceptionHandler {
     @ResponseStatus(org.springframework.http.HttpStatus.NOT_FOUND)
     @ExceptionHandler(NotFoundException.class)
     @ResponseBody
-    public String handleNotFoundException(HttpServletRequest req, NotFoundException ex) {
-        return ex.getDescription();
+    public String handleNotFoundException(HttpServletRequest req, NotFoundException e) {
+        return e.getDescription();
     }
 
     @ResponseStatus(org.springframework.http.HttpStatus.BAD_REQUEST)

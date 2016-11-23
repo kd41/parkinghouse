@@ -1,5 +1,6 @@
 package ee.home.parkinghouse.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
@@ -12,6 +13,7 @@ import ee.home.parkinghouse.util.JsonDateSerializer;
 
 public class Fee {
 
+    @JsonIgnore
     private long id;
     @JsonSerialize(using = JsonDateSerializer.class)
     @JsonDeserialize(using = JsonDateDeserializer.class)
@@ -22,6 +24,7 @@ public class Fee {
     private List<Part> parts = new ArrayList<>();
     private long totalCost;
     private User user;
+    @JsonIgnore
     private boolean payed;
 
     public long getId() {
@@ -103,7 +106,11 @@ public class Fee {
     }
 
     public static class Part {
+        @JsonSerialize(using = JsonDateSerializer.class)
+        @JsonDeserialize(using = JsonDateDeserializer.class)
         private Date start;
+        @JsonSerialize(using = JsonDateSerializer.class)
+        @JsonDeserialize(using = JsonDateDeserializer.class)
         private Date end;
         private int count;
         private long cost;

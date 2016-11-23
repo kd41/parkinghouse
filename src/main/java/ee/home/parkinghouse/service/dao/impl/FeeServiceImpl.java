@@ -6,12 +6,14 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 import java.util.List;
 
+import ee.home.parkinghouse.calculation.FeeCostCalculation;
 import ee.home.parkinghouse.dao.FeeDao;
 import ee.home.parkinghouse.model.Fee;
 import ee.home.parkinghouse.model.User;
 import ee.home.parkinghouse.model.User.CustomerType;
 import ee.home.parkinghouse.service.dao.FeeService;
 import ee.home.parkinghouse.service.dao.UserService;
+import ee.home.parkinghouse.service.exception.NotFoundException;
 
 @Service
 public class FeeServiceImpl implements FeeService {
@@ -21,6 +23,9 @@ public class FeeServiceImpl implements FeeService {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private FeeCostCalculation feeCostCalculation;
 
     @Override
     public List<Fee> findAll() {
@@ -34,12 +39,15 @@ public class FeeServiceImpl implements FeeService {
 
     @Override
     public long addFee(String username, Date startDate, Date endDate) {
-        User user = userService.findByUsername(username);
-        if (user == null) {
+        User user;
+        try {
+            user = userService.findByUsername(username);
+        } catch (NotFoundException e) {
             userService.addUser(username, CustomerType.REGULAR);
             user = userService.findByUsername(username);
+
         }
-        Fee fee = new Fee();
+        Fee fee = feeCostCalculation.getFee(startDate, endDate, user.getCustomerType());
         fee.setStart(startDate);
         fee.setEnd(endDate);
         fee.setUser(user);

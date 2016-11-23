@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import ee.home.parkinghouse.model.Fee;
 import ee.home.parkinghouse.service.dao.FeeService;
@@ -33,11 +34,11 @@ public class FeeController {
     @RequestMapping(method = RequestMethod.GET, value = "/{username}")
     public ResponseEntity<Collection<Fee>> findByUsername(@PathVariable String username) {
         checkUsername(username);
-        return ResponseEntity.ok(feeService.findByUsername(username));
+        List<Fee> fees = feeService.findByUsername(username);
+        return ResponseEntity.ok(fees);
     }
 
-    // TODO: investigate Date here
-    @RequestMapping(method = RequestMethod.POST, value = "/{username}?start={start}&end={end}")
+    @RequestMapping(method = RequestMethod.POST, value = "/{username}")
     public ResponseEntity<Long> add(@PathVariable String username, @RequestParam("start") @DateTimeFormat(pattern = DateUtil.DATE_FORMAT) Date start,
             @RequestParam("end") @DateTimeFormat(pattern = DateUtil.DATE_FORMAT) Date end) {
         checkUsername(username);

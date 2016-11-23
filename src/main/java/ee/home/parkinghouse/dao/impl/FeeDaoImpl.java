@@ -24,7 +24,7 @@ public class FeeDaoImpl implements FeeDao {
 
     @Override
     public List<Fee> findByUsername(String username) {
-        return cache.stream().filter(fee -> fee.getUser().getUsername() == username).collect(Collectors.toList());
+        return cache.stream().filter(fee -> fee.getUser().getUsername().equals(username)).collect(Collectors.toList());
     }
 
     @Override

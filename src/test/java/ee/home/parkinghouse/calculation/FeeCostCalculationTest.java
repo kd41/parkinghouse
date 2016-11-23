@@ -32,7 +32,7 @@ public class FeeCostCalculationTest {
     public void getRegularCostTest1() throws ParseException {
         Date start = parseDate("21.11.2016 08:12");
         Date end = parseDate("21.11.2016 10:45");
-        Fee fee = feeCostCalculation.getFees(start, end, CustomerType.REGULAR);
+        Fee fee = feeCostCalculation.getFee(start, end, CustomerType.REGULAR);
 
         assertEquals("Fee parts count should be 1", 1, fee.getParts().size());
         Fee.Part part = fee.getParts().get(0);
@@ -45,7 +45,7 @@ public class FeeCostCalculationTest {
     public void getRegularCostTest2() throws ParseException {
         Date start = parseDate("21.11.2016 19:40");
         Date end = parseDate("21.11.2016 20:35");
-        Fee fee = feeCostCalculation.getFees(start, end, CustomerType.REGULAR);
+        Fee fee = feeCostCalculation.getFee(start, end, CustomerType.REGULAR);
 
         assertEquals("Fees count should be 1", 1, fee.getParts().size());
         Fee.Part part = fee.getParts().get(0);
@@ -58,7 +58,7 @@ public class FeeCostCalculationTest {
     public void getRegularCostTest3() throws ParseException {
         Date start = parseDate("21.11.2016 08:00");
         Date end = parseDate("21.11.2016 08:29");
-        Fee fee = feeCostCalculation.getFees(start, end, CustomerType.REGULAR);
+        Fee fee = feeCostCalculation.getFee(start, end, CustomerType.REGULAR);
 
         assertEquals("Fees count should be 1", 1, fee.getParts().size());
         Fee.Part part = fee.getParts().get(0);
@@ -71,7 +71,7 @@ public class FeeCostCalculationTest {
     public void getRegularCostTest4() throws ParseException {
         Date start = parseDate("21.11.2016 08:00");
         Date end = parseDate("21.11.2016 08:30");
-        Fee fee = feeCostCalculation.getFees(start, end, CustomerType.REGULAR);
+        Fee fee = feeCostCalculation.getFee(start, end, CustomerType.REGULAR);
 
         assertEquals("Fees count should be 1", 1, fee.getParts().size());
         Fee.Part part = fee.getParts().get(0);
@@ -84,7 +84,7 @@ public class FeeCostCalculationTest {
     public void getPremiumCostTest1() throws ParseException {
         Date start = parseDate("21.11.2016 08:12");
         Date end = parseDate("21.11.2016 10:45");
-        Fee fee = feeCostCalculation.getFees(start, end, CustomerType.PREMIUM);
+        Fee fee = feeCostCalculation.getFee(start, end, CustomerType.PREMIUM);
 
         assertEquals("Fees count should be 1", 1, fee.getParts().size());
         Fee.Part part = fee.getParts().get(0);
@@ -97,7 +97,7 @@ public class FeeCostCalculationTest {
     public void getPremiumCostTest2() throws ParseException {
         Date start = parseDate("21.11.2016 07:02");
         Date end = parseDate("21.11.2016 11:56");
-        Fee fee = feeCostCalculation.getFees(start, end, CustomerType.PREMIUM);
+        Fee fee = feeCostCalculation.getFee(start, end, CustomerType.PREMIUM);
 
         assertEquals("Fees count should be 1", 1, fee.getParts().size());
         Fee.Part part = fee.getParts().get(0);
@@ -110,7 +110,7 @@ public class FeeCostCalculationTest {
     public void getPremiumCostTest3() throws ParseException {
         Date start = parseDate("21.11.2016 22:10");
         Date end = parseDate("21.11.2016 22:35");
-        Fee fee = feeCostCalculation.getFees(start, end, CustomerType.PREMIUM);
+        Fee fee = feeCostCalculation.getFee(start, end, CustomerType.PREMIUM);
 
         assertEquals("Fees count should be 1", 1, fee.getParts().size());
         Fee.Part part = fee.getParts().get(0);
@@ -123,7 +123,7 @@ public class FeeCostCalculationTest {
     public void getPremiumCostTest4() throws ParseException {
         Date start = parseDate("21.11.2016 19:40");
         Date end = parseDate("21.11.2016 20:35");
-        Fee fee = feeCostCalculation.getFees(start, end, CustomerType.PREMIUM);
+        Fee fee = feeCostCalculation.getFee(start, end, CustomerType.PREMIUM);
 
         assertEquals("Fees count should be 1", 1, fee.getParts().size());
         Fee.Part part = fee.getParts().get(0);
@@ -137,7 +137,7 @@ public class FeeCostCalculationTest {
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
         Date start = format.parse("21.11.2016 19:40:32");
         Date end = format.parse("21.11.2016 19:40:47");
-        Fee fee = feeCostCalculation.getFees(start, end, CustomerType.PREMIUM);
+        Fee fee = feeCostCalculation.getFee(start, end, CustomerType.PREMIUM);
 
         assertEquals("Fees count should be 1", 1, fee.getParts().size());
     }
@@ -147,7 +147,7 @@ public class FeeCostCalculationTest {
         SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
         Date start = format.parse("21.11.2016 19:40:32");
         Date end = format.parse("21.11.2016 19:41:31");
-        Fee fee = feeCostCalculation.getFees(start, end, CustomerType.PREMIUM);
+        Fee fee = feeCostCalculation.getFee(start, end, CustomerType.PREMIUM);
 
         assertEquals("Fees count should be 1", 1, fee.getParts().size());
     }
@@ -156,7 +156,7 @@ public class FeeCostCalculationTest {
     public void startEndTest() throws ParseException {
         Date start = parseDate("21.11.2016 12:34");
         Date end = parseDate("21.11.2016 11:01");
-        feeCostCalculation.getFees(start, end, CustomerType.PREMIUM);
+        feeCostCalculation.getFee(start, end, CustomerType.PREMIUM);
     }
 
     private Date parseDate(String time) throws ParseException {

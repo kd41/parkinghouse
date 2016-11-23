@@ -21,8 +21,6 @@ public class MockDataController {
     private static final String USER_SIMON = "Simon";
     private static final String USER_RUFUS = "Rufus";
     private static final String USER_GRAZIANO = "Graziano";
-    private static final String DATE_START = "22.11.2016_12:00";
-    private static final String DATE_END = "22.11.2016_13:59";
 
     @Autowired
     private UserService userService;
@@ -39,9 +37,12 @@ public class MockDataController {
 
         SimpleDateFormat format = new SimpleDateFormat(DateUtil.DATE_FORMAT);
         try {
-            feeService.addFee(USER_SIMON, format.parse(DATE_START), format.parse(DATE_END));
-            feeService.addFee(USER_RUFUS, format.parse(DATE_START), format.parse(DATE_START));
-            feeService.addFee(USER_GRAZIANO, format.parse(DATE_START), format.parse(DATE_END));
+            feeService.addFee(USER_RUFUS, format.parse("22.11.2016_08:12"), format.parse("22.11.2016_10:45"));
+            feeService.addFee(USER_RUFUS, format.parse("22.11.2016_19:40"), format.parse("22.11.2016_20:35"));
+            feeService.addFee(USER_GRAZIANO, format.parse("22.11.2016_08:12"), format.parse("22.11.2016_10:45"));
+            feeService.addFee(USER_GRAZIANO, format.parse("22.11.2016_07:02"), format.parse("22.11.2016_11:56"));
+            feeService.addFee(USER_GRAZIANO, format.parse("22.11.2016_22:10"), format.parse("22.11.2016_22:35"));
+            feeService.addFee(USER_GRAZIANO, format.parse("22.11.2016_19:40"), format.parse("22.11.2016_20:35"));
         } catch (ParseException e) {
             return new ResponseEntity<Void>(HttpStatus.BAD_REQUEST);
         }

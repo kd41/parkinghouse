@@ -21,10 +21,11 @@ public class FeeCostCalculation {
     @Autowired
     private ParkinghouseProperties properties;
 
-    public Fee getFees(final Date start, final Date end, final CustomerType customerType) {
+    public Fee getFee(final Date start, final Date end, final CustomerType customerType) {
         if (DateUtil.isFirstAfter(start, end)) {
             throw new IllegalArgumentException("Start may not be after end.");
         }
+        // TODO: remove creating new instance from here
         Fee fee = new Fee();
         fee.setStart(start);
         fee.setEnd(end);
