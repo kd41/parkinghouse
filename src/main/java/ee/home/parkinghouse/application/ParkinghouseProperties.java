@@ -5,17 +5,23 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalTime;
-import java.util.Date;
+import java.time.format.DateTimeFormatter;
 
 @Component
 @PropertySource("classpath:parkinghouse.properties")
 public class ParkinghouseProperties {
 
-    @Value("#{new java.text.SimpleDateFormat(\"HH:mm\").parse(\"${day.fee.start.time}\")}")
-    private Date dayFeeStartTime;
+    // let it be here for example
+    // @Value("#{new java.text.SimpleDateFormat(\"HH:mm\").parse(\"${day.fee.start.time}\")}")
+    // private Date dayFeeStartTime;
 
-    @Value("#{new java.text.SimpleDateFormat(\"HH:mm\").parse(\"${day.fee.end.time}\")}")
-    private Date dayFeeEndTime;
+    @Value("${day.fee.start.time}")
+    private String dayFeeStartTime;
+    private LocalTime dayFeeStartLocalTime;
+
+    @Value("${day.fee.end.time}")
+    private String dayFeeEndTime;
+    private LocalTime dayFeeEndLocalTime;
 
     @Value("${regular.fee.day.cost}")
     private long regularFeeDayCost;
@@ -35,14 +41,18 @@ public class ParkinghouseProperties {
     @Value("${premium.fee.max.month.cost.limit}")
     private long premiumMaxMonthLimit;
 
-    @SuppressWarnings("deprecation")
     public LocalTime getDayFeeStartTime() {
-        return LocalTime.of(dayFeeStartTime.getHours(), dayFeeStartTime.getMinutes());
+        if (dayFeeStartLocalTime == null) {
+            dayFeeStartLocalTime = LocalTime.parse(dayFeeStartTime, DateTimeFormatter.ISO_LOCAL_TIME);
+        }
+        return dayFeeStartLocalTime;
     }
 
-    @SuppressWarnings("deprecation")
     public LocalTime getDayFeeEndTime() {
-        return LocalTime.of(dayFeeEndTime.getHours(), dayFeeEndTime.getMinutes());
+        if (dayFeeEndLocalTime == null) {
+            dayFeeEndLocalTime = LocalTime.parse(dayFeeEndTime, DateTimeFormatter.ISO_LOCAL_TIME);
+        }
+        return dayFeeEndLocalTime;
     }
 
     public long getRegularFeeDayCost() {
