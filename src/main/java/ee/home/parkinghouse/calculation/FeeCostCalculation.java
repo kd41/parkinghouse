@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.Date;
 
 import ee.home.parkinghouse.application.ParkinghouseProperties;
@@ -29,20 +28,18 @@ public class FeeCostCalculation {
         Fee fee = new Fee();
         fee.setStart(start);
         fee.setEnd(end);
-        LocalDateTime startLocal = LocalDateTime.ofInstant(start.toInstant(), ZoneId.systemDefault());
-        LocalDateTime endLocal = LocalDateTime.ofInstant(end.toInstant(), ZoneId.systemDefault());
+        LocalDateTime startLocal = DateUtil.dateToLocalDateTime(start);
+        LocalDateTime endLocal = DateUtil.dateToLocalDateTime(end);
         Duration duration = Duration.between(startLocal, endLocal);
         long durationMinutes = duration.toMinutes();
         if (durationMinutes == 0) {
             addPartToFee(fee, start, end, 0, 0);
             return fee;
         }
-        LocalDateTime startDayTime = DateUtil.nowLocalDateTime().withHour(properties.getDayFeeStartTime().getHour())
-                .withMinute(properties.getDayFeeStartTime().getMinute()).withSecond(0).withNano(0);
-        LocalDateTime endDayTime = DateUtil.nowLocalDateTime().withHour(properties.getDayFeeEndTime().getHour())
-                .withMinute(properties.getDayFeeEndTime().getMinute()).withSecond(0).withNano(0);
+        LocalDateTime startDayTime = DateUtil.getLocalDateTimeWithTime(start, properties.getDayFeeStartTime());
+        LocalDateTime endDayTime = DateUtil.getLocalDateTimeWithTime(end, properties.getDayFeeEndTime());
         boolean isDayFee = false;
-        if (startLocal.isAfter(startDayTime) && startLocal.isBefore(endDayTime)) {
+        if (DateUtil.isFirstAfter(startLocal, startDayTime) && DateUtil.isFirstBefore(startLocal, endDayTime)) {
             isDayFee = true;
         }
         addPartToFee(fee, start, end, getPartCost(customerType, !isDayFee), (int) durationMinutes / 30 + 1);
