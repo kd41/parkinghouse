@@ -1,4 +1,4 @@
-package ee.home.parkinghouse.service.dao.impl;
+package ee.home.parkinghouse.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,7 +8,7 @@ import java.util.List;
 import ee.home.parkinghouse.dao.UserDao;
 import ee.home.parkinghouse.model.User;
 import ee.home.parkinghouse.model.User.CustomerType;
-import ee.home.parkinghouse.service.dao.UserService;
+import ee.home.parkinghouse.service.UserService;
 import ee.home.parkinghouse.service.exception.AlreadyExistsException;
 import ee.home.parkinghouse.service.exception.NotFoundException;
 

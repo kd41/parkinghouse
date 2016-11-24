@@ -1,4 +1,4 @@
-package ee.home.parkinghouse.service.dao;
+package ee.home.parkinghouse.service;
 
 import java.util.List;
 

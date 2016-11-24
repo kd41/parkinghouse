@@ -13,7 +13,7 @@ import java.util.Collection;
 
 import ee.home.parkinghouse.model.User;
 import ee.home.parkinghouse.model.User.CustomerType;
-import ee.home.parkinghouse.service.dao.UserService;
+import ee.home.parkinghouse.service.UserService;
 import ee.home.parkinghouse.service.exception.BadRequestException;
 
 @RestController

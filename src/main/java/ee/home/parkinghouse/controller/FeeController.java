@@ -15,7 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 import ee.home.parkinghouse.model.Fee;
-import ee.home.parkinghouse.service.dao.FeeService;
+import ee.home.parkinghouse.service.FeeService;
 import ee.home.parkinghouse.service.exception.BadRequestException;
 import ee.home.parkinghouse.util.DateUtil;
 

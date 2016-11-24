@@ -11,8 +11,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 import ee.home.parkinghouse.model.User.CustomerType;
-import ee.home.parkinghouse.service.dao.FeeService;
-import ee.home.parkinghouse.service.dao.UserService;
+import ee.home.parkinghouse.service.FeeService;
+import ee.home.parkinghouse.service.UserService;
 import ee.home.parkinghouse.util.DateUtil;
 
 @RestController

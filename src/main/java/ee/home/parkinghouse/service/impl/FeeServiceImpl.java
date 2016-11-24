@@ -1,4 +1,4 @@
-package ee.home.parkinghouse.service.dao.impl;
+package ee.home.parkinghouse.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,8 +11,8 @@ import ee.home.parkinghouse.dao.FeeDao;
 import ee.home.parkinghouse.model.Fee;
 import ee.home.parkinghouse.model.User;
 import ee.home.parkinghouse.model.User.CustomerType;
-import ee.home.parkinghouse.service.dao.FeeService;
-import ee.home.parkinghouse.service.dao.UserService;
+import ee.home.parkinghouse.service.FeeService;
+import ee.home.parkinghouse.service.UserService;
 import ee.home.parkinghouse.service.exception.NotFoundException;
 
 @Service
