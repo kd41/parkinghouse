@@ -1,4 +1,4 @@
-package ee.home.parkinghouse.service.exception;
+package ee.home.parkinghouse.exception;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

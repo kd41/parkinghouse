@@ -1,4 +1,4 @@
-package ee.home.parkinghouse.service.exception;
+package ee.home.parkinghouse.exception;
 
 public class NotFoundException extends RuntimeException {
     private static final long serialVersionUID = -6705577152479737731L;

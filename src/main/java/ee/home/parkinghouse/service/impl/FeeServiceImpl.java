@@ -8,12 +8,12 @@ import java.util.List;
 
 import ee.home.parkinghouse.calculation.FeeCostCalculation;
 import ee.home.parkinghouse.dao.FeeDao;
+import ee.home.parkinghouse.exception.NotFoundException;
 import ee.home.parkinghouse.model.Fee;
 import ee.home.parkinghouse.model.User;
 import ee.home.parkinghouse.model.User.CustomerType;
 import ee.home.parkinghouse.service.FeeService;
 import ee.home.parkinghouse.service.UserService;
-import ee.home.parkinghouse.service.exception.NotFoundException;
 
 @Service
 public class FeeServiceImpl implements FeeService {
