@@ -17,7 +17,8 @@
 2. Mock data can be loaded by making GET request to "/api/mock".
 
 ### Implementation and decision descriptions:
-1. Money are in cents
+1. Money are in cents.
+2. Implemented REST api exception handling.
 
 ### What is missed and how it should be improved:
 1. Implement logging. Slf4j will be better solution.
@@ -26,3 +27,5 @@
 4. Parking house settings (prices, times, limits) are located in .properties file. But to implement in future requirement "Today the company operates only one parking house but in the future this will grow" this settings should migrate to database. Parking house settings will be loaded by separate service (like ParkinghouseSetting.loadByName(String parkinghouseName).
 5. Implement authorization and authentication.
 6. [Swagger](http://www.baeldung.com/swagger-2-documentation-for-spring-rest-api) can be used to describe API calls.
+7. Vendor name can be added to REST api then application can support several vendors. Related with parking house settings.
+8. REST api and pages are in same module but can be separated.
