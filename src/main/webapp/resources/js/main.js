@@ -6,7 +6,7 @@ $(document).ready(function() {
 		invoiceButton.attr("disabled", true);
 		$.ajax({
 			type : "POST",
-			url : "/api/invoices/" + $('#username').val(),
+			url : "api/invoices/" + $('#username').val(),
 			timeout : 100000,
 			success : function(data) {
 				handleClassAfterCall(feedbackFormDiv, true);
@@ -25,7 +25,7 @@ $(document).ready(function() {
 		feedbackDiv.removeClass();
 		$.ajax({
 			type : "GET",
-			url : "/api/mock",
+			url : "api/mock",
 			timeout : 100000,
 			success : function(data) {
 				handleClassAfterCall(feedbackDiv, true);
@@ -41,7 +41,7 @@ $(document).ready(function() {
 		feedbackDiv.removeClass();
 		$.ajax({
 			type : "GET",
-			url : "/api/users",
+			url : "api/users",
 			timeout : 100000,
 			success : function(data) {
 				handleClassAfterCall(feedbackDiv, true);
