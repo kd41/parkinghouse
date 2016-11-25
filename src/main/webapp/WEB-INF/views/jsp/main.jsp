@@ -29,20 +29,18 @@
 
 		<div id="feedbackForm"></div>
 
-		<form id="invoiceForm" class="form-horizontal">
-			<div class="form-group form-group-lg">
-				<label class="col-sm-2 control-label">Username</label>
-				<div class="col-sm-10">
-					<input type=text class="form-control" id="username">
-				</div>
+		<div class="form-group form-group-lg">
+			<label class="col-sm-2 control-label">Username</label>
+			<div class="col-sm-10">
+				<input type=text class="form-control" id="username">
 			</div>
+		</div>
 
-			<div class="form-group">
-				<div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" id="btnGetInvoice" class="btn btn-primary btn-lg">Get invoice</button>
-				</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button id="btnGetInvoice" class="btn btn-primary btn-lg">Get invoice</button>
 			</div>
-		</form>
+		</div>
 
 	</div>
 

@@ -12,10 +12,4 @@ public class MainController {
         return "main";
     }
 
-    @RequestMapping("/main")
-    public String main(Model model) {
-        model.addAttribute("name", "Graziano");
-        return "main";
-    }
-
 }

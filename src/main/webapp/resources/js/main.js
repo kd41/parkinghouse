@@ -1,12 +1,10 @@
 $(document).ready(function() {
 	// form
-	var invoiceButton = $('#btnGetInvoice');
 	var feedbackFormDiv = $('#feedbackForm');
-	$("#invoiceForm").submit(function(event) {
-		invoiceButton.attr("disabled", true);
+	$('#btnGetInvoice').click(function() {
 		$.ajax({
-			type : "POST",
-			url : "api/invoices/" + $('#username').val(),
+			type : "GET",
+			url : "api/invoices?username=" + $('#username').val(),
 			timeout : 100000,
 			success : function(data) {
 				handleClassAfterCall(feedbackFormDiv, true);
@@ -14,7 +12,6 @@ $(document).ready(function() {
 			},
 			error : function(e) {
 				handleClassAfterCall(feedbackFormDiv, false);
-				invoiceButton.attr("disabled", false);
 			}
 		});
 	});
