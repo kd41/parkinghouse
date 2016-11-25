@@ -7,22 +7,19 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import ee.home.parkinghouse.application.ParkinghouseConfiguration;
 import ee.home.parkinghouse.application.ParkinghouseProperties;
 import ee.home.parkinghouse.model.Fee;
 import ee.home.parkinghouse.model.User.CustomerType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(
-        classes = { ParkinghouseProperties.class, ParkinghouseConfiguration.class, FeeCostCalculation.class }, loader = AnnotationConfigContextLoader.class)
 @WebAppConfiguration
+@ContextConfiguration(classes = { ParkinghouseProperties.class, FeeCostCalculation.class })
 public class FeeCostCalculationTest {
 
     @Autowired
