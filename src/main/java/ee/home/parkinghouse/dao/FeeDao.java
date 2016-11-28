@@ -8,7 +8,11 @@ public interface FeeDao {
 
     List<Fee> findAll();
 
+    List<Fee> findNotInvoiced();
+
     List<Fee> findByUsername(String username);
+
+    Fee findById(long id);
 
     long addFee(Fee fee);
 

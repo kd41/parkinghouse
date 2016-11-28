@@ -21,6 +21,24 @@ public final class DateUtil {
         return LocalDateTime.now();
     }
 
+    public static int getCurrentYear() {
+        return nowLocalDateTime().getYear();
+    }
+
+    public static int getCurrentMonth() {
+        return nowLocalDateTime().getMonthValue();
+    }
+
+    @SuppressWarnings("deprecation")
+    public static boolean equalMonths(Date date1, Date date2) {
+        return date1.getMonth() == date2.getMonth();
+    }
+
+    @SuppressWarnings("deprecation")
+    public static boolean equalYears(Date date1, Date date2) {
+        return date1.getYear() == date2.getYear();
+    }
+
     public static LocalDateTime dateToLocalDateTime(Date date) {
         return LocalDateTime.ofInstant(date.toInstant(), ZoneId.systemDefault());
     }

@@ -28,4 +28,10 @@ public class ParkinghouseExceptionHandler {
     public void handleAlreadyExistsException() {
         // Nothing to do
     }
+
+    @ResponseStatus(org.springframework.http.HttpStatus.BAD_REQUEST)
+    @ExceptionHandler(InternalException.class)
+    public void handleInternalException() {
+        // Nothing to do
+    }
 }

@@ -29,22 +29,24 @@
 
 		<div id="feedbackForm"></div>
 
-		<div class="form-group form-group-lg">
+		<div>
 			<label class="col-sm-2 control-label">Username</label>
-			<div class="col-sm-10">
-				<input type=text class="form-control" id="username">
+			<div class="col-sm-3">
+				<input type=text class="form-control" id="username" value="Graziano">
 			</div>
 		</div>
 
-		<div class="form-group">
+		<div>
 			<div class="col-sm-offset-2 col-sm-10">
 				<button id="btnGetInvoice" class="btn btn-primary btn-lg">Get invoice</button>
 			</div>
 		</div>
+		<br>
+		<div id="responseForm"></div>
 
 	</div>
 
-	<br> <br> <br>
+	<br> <br> <br> <br> <br>
 	<h2>Please choose the helper action:</h2>
 	<div id="feedbackAction"></div>
 	<div>

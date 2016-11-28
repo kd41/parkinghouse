@@ -29,6 +29,7 @@ public class FeeCostCalculation {
         Fee fee = new Fee();
         fee.setStart(start);
         fee.setEnd(end);
+        fee.setCurrency(properties.getCurrency());
         LocalDateTime startLocal = DateUtil.dateToLocalDateTime(start);
         LocalDateTime endLocal = DateUtil.dateToLocalDateTime(end);
         Duration duration = Duration.between(startLocal, endLocal);

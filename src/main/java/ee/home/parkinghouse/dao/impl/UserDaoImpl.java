@@ -2,7 +2,6 @@ package ee.home.parkinghouse.dao.impl;
 
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,7 +19,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> findAll() {
-        return new ArrayList<>(cache.values().stream().filter(user -> !user.isDeleted()).collect(Collectors.toList()));
+        return cache.values().stream().filter(user -> !user.isDeleted()).collect(Collectors.toList());
     }
 
     @Override

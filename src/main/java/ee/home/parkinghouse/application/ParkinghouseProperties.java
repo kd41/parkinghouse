@@ -41,6 +41,9 @@ public class ParkinghouseProperties {
     @Value("${premium.fee.max.month.cost.limit}")
     private long premiumMaxMonthLimit;
 
+    @Value("${currency}")
+    private String currency;
+
     public LocalTime getDayFeeStartTime() {
         if (dayFeeStartLocalTime == null) {
             dayFeeStartLocalTime = LocalTime.parse(dayFeeStartTime, DateTimeFormatter.ISO_LOCAL_TIME);
@@ -77,6 +80,10 @@ public class ParkinghouseProperties {
 
     public long getPremiumMaxMonthLimit() {
         return premiumMaxMonthLimit;
+    }
+
+    public String getCurrency() {
+        return currency;
     }
 
 }

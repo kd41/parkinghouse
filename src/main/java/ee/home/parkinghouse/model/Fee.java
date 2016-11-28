@@ -23,9 +23,11 @@ public class Fee {
     private Date end;
     private List<Part> parts = new ArrayList<>();
     private long totalCost;
+    private String currency;
     private User user;
     @JsonIgnore
     private boolean payed;
+    private boolean invoiced;
 
     public long getId() {
         return id;
@@ -67,6 +69,14 @@ public class Fee {
         this.totalCost = totalCost;
     }
 
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
     public User getUser() {
         return user;
     }
@@ -81,6 +91,14 @@ public class Fee {
 
     public void setPayed(boolean payed) {
         this.payed = payed;
+    }
+
+    public boolean isInvoiced() {
+        return invoiced;
+    }
+
+    public void setInvoiced(boolean invoiced) {
+        this.invoiced = invoiced;
     }
 
     @Override
@@ -103,6 +121,31 @@ public class Fee {
         if (id != other.id)
             return false;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Fee [id=");
+        builder.append(id);
+        builder.append(", start=");
+        builder.append(start);
+        builder.append(", end=");
+        builder.append(end);
+        builder.append(", parts=");
+        builder.append(parts);
+        builder.append(", totalCost=");
+        builder.append(totalCost);
+        builder.append(", currency=");
+        builder.append(currency);
+        builder.append(", user=");
+        builder.append(user);
+        builder.append(", payed=");
+        builder.append(payed);
+        builder.append(", invoiced=");
+        builder.append(invoiced);
+        builder.append("]");
+        return builder.toString();
     }
 
     public static class Part {
@@ -154,6 +197,23 @@ public class Fee {
 
         public void setTotalCost(long totalCost) {
             this.totalCost = totalCost;
+        }
+
+        @Override
+        public String toString() {
+            StringBuilder builder = new StringBuilder();
+            builder.append("Part [start=");
+            builder.append(start);
+            builder.append(", end=");
+            builder.append(end);
+            builder.append(", count=");
+            builder.append(count);
+            builder.append(", cost=");
+            builder.append(cost);
+            builder.append(", totalCost=");
+            builder.append(totalCost);
+            builder.append("]");
+            return builder.toString();
         }
 
     }

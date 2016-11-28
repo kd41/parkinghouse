@@ -8,6 +8,7 @@ import java.util.List;
 
 import ee.home.parkinghouse.calculation.FeeCostCalculation;
 import ee.home.parkinghouse.dao.FeeDao;
+import ee.home.parkinghouse.exception.InternalException;
 import ee.home.parkinghouse.exception.NotFoundException;
 import ee.home.parkinghouse.model.Fee;
 import ee.home.parkinghouse.model.User;
@@ -33,8 +34,19 @@ public class FeeServiceImpl implements FeeService {
     }
 
     @Override
+    public List<Fee> findNotInvoiced() {
+        return feeDao.findNotInvoiced();
+    }
+
+    @Override
     public List<Fee> findByUsername(String username) {
         return feeDao.findByUsername(username);
+    }
+
+    @Override
+    public Fee findById(long id) {
+        checkExists(id);
+        return feeDao.findById(id);
     }
 
     @Override
@@ -54,6 +66,23 @@ public class FeeServiceImpl implements FeeService {
 
         long feeId = feeDao.addFee(fee);
         return feeId;
+    }
+
+    @Override
+    public long changeFeeById(long id, Fee fee) {
+        checkExists(id);
+        if (id != fee.getId()) {
+            throw new InternalException("Fee id and id are not equal.Fee id=" + fee.getId() + ", id=" + id);
+        }
+        feeDao.changeFeeById(id, fee);
+        return id;
+    }
+
+    private void checkExists(long id) {
+        Fee fee = feeDao.findById(id);
+        if (fee == null) {
+            throw new NotFoundException("Fee not found. Fee id=" + id);
+        }
     }
 
 }
