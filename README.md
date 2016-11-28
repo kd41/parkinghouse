@@ -10,11 +10,11 @@
 1. Download and unzip.
 2. Open command prompt and build by running command: "mvn clean install".
 3. "/target" folder will contain "parking-house-1.0-SNAPSHOT.war".
-4. .war can be deployed to any application server (Tomcat, WildFly).
+4. .war can be deployed to any application server (Tomcat, WildFly) or just run command: "mvn jetty:run".
 
 ### What happens if application is started?
 1. All data is saved in memory. By every restart application will have fresh data.
-2. Mock data can be loaded by making GET request to "/api/mock".
+2. Mock data can be loaded by making GET request to "/api/mock" or pressed "Add mock" button.
 
 ### Implementation and decision descriptions:
 1. Money are in cents.
@@ -29,3 +29,4 @@
 6. [Swagger](http://www.baeldung.com/swagger-2-documentation-for-spring-rest-api) can be used to describe API calls.
 7. Vendor name can be added to REST api then application can support several vendors. Related with parking house settings.
 8. REST api and pages are in same module but can be separated.
+9. Limit for premium customers not implemented.
